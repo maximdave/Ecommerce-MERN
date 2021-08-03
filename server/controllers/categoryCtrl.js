@@ -4,9 +4,8 @@ const Products = require('../models/productModel')
 const categoryCtrl = {
     getCategories: async(req, res) =>{
         try {
-            res.send('test cat')
-            // const categories = await Category.find()
-            // res.json(categories)
+            const categories = await Category.find()
+            res.json(categories)
         } catch (err) {
             return res.status(500).json({msg: err.message})
         }
