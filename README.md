@@ -1,4 +1,4 @@
-# A Simple Blog
+# A MERN Ecommerce App
 
 ## Requirements
 
