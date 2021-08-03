@@ -20,6 +20,7 @@ app.use(
 app.use('/user', userRouter);
 app.use('/api', require('./routes/categoryRouter'));
 app.use('/api', require('./routes/upload'));
+app.use('/api', require('./routes/productRouter'));
 
 //Connect to mongoDB
 connect();
