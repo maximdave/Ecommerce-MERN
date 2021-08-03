@@ -18,6 +18,7 @@ app.use(
 
 //Routes
 app.use('/user', userRouter);
+app.use('/api', require('./routes/categoryRouter'));
 
 //Connect to mongoDB
 connect();
