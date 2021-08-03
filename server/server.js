@@ -4,6 +4,7 @@ const cors = require('cors');
 const fileUpload = require('express-fileupload');
 const cookieParser = require('cookie-parser');
 const { connect } = require('./database/mongoDBConnection');
+const userRouter = require('./routes/userRouter');
 
 const app = express();
 app.use(express.json());
@@ -14,6 +15,9 @@ app.use(
     useTempFiles: true,
   })
 );
+
+//Routes
+app.use('/user', userRouter);
 
 //Connect to mongoDB
 connect();
