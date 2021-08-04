@@ -22,9 +22,9 @@ function connect() {
   });
   database.on('error', () => {
     console.log('Error connecting to database');
+    return;
   });
 }
-
 
 module.exports = {
   connect: connect,
