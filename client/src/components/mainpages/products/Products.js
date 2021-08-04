@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import { useContext } from 'react';
 import { GlobalState } from '../../../GlobalState';
 import ProductItem from '../utils/productItem/ProductItem';
 
