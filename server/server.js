@@ -5,6 +5,8 @@ const fileUpload = require('express-fileupload');
 const cookieParser = require('cookie-parser');
 const { connect } = require('./database/mongoDBConnection');
 const userRouter = require('./routes/userRouter');
+const swaggerUi = require('swagger-ui-express');
+const swaggerFile = require('./swagger_output.json');
 
 const app = express();
 app.use(express.json());
@@ -16,6 +18,9 @@ app.use(
   })
 );
 
+//Swagger for API documentation
+app.use('/doc', swaggerUi.serve, swaggerUi.setup(swaggerFile));
+
 //Routes
 app.use('/user', userRouter);
 app.use('/api', require('./routes/categoryRouter'));
@@ -26,7 +31,9 @@ app.use('/api', require('./routes/productRouter'));
 connect();
 
 app.get('/', (req, res) => {
-  res.json({ msg: 'Welcome David' });
+  res.json({
+    msg: 'Welcome to Ecommerce Shop Backend. Built with ❤️ by David Enoragbon',
+  });
 });
 
 const PORT = process.env.PORT || '5000';

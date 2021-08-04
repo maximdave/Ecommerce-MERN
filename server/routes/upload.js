@@ -13,6 +13,15 @@ cloudinary.config({
 
 // Upload image only admin can use
 router.post('/upload', auth, authAdmin, (req, res) => {
+  /*  #swagger.tags = ['Uploads']
+        #swagger.security = [{
+        "Authorization": []
+        }]
+    	#swagger.parameters['obj'] = {
+            in: 'body',
+            required: true,
+            schema: { $ref: "#/definitions/UploadModel" }
+    } */
   try {
     if (!req.files || Object.keys(req.files).length === 0)
       return res.status(400).json({ msg: 'No files were uploaded.' });
@@ -49,6 +58,15 @@ router.post('/upload', auth, authAdmin, (req, res) => {
 
 // Delete image only admin can use
 router.post('/destroy', auth, authAdmin, (req, res) => {
+  /*  #swagger.tags = ['Uploads']
+        #swagger.security = [{
+        "Authorization": []
+        }]
+    	#swagger.parameters['obj'] = {
+            in: 'body',
+            required: true,
+            schema: { $ref: "#/definitions/DeleteUploadModel" }
+    } */
   try {
     const { public_id } = req.body;
     if (!public_id) return res.status(400).json({ msg: 'No images Selected' });

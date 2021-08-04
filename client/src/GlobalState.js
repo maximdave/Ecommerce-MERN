@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { createContext, useState, useEffect } from 'react';
 import ProductsAPI from './api/ProductsAPI';
-// import UserAPI from './api/UserAPI'
+import UserAPI from './api/UserAPI';
 // import CategoriesAPI from './api/CategoriesAPI'
 
 // import axios from 'axios'
@@ -25,6 +25,7 @@ export const DataProvider = ({ children }) => {
   const state = {
     token: [token, setToken],
     productsAPI: ProductsAPI(),
+    userAPI: UserAPI(token),
   };
 
   // useEffect(() =>{

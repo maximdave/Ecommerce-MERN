@@ -50,6 +50,7 @@ class APIfeatures {
 
 const productCtrl = {
   getProducts: async (req, res) => {
+    //#swagger.tags = ['Products']
     try {
       const features = new APIfeatures(Products.find(), req.query)
         .filtering()
@@ -68,6 +69,15 @@ const productCtrl = {
     }
   },
   createProduct: async (req, res) => {
+    /*  #swagger.tags = ['Products']
+        #swagger.security = [{
+        "Authorization": []
+        }]
+    	#swagger.parameters['obj'] = {
+            in: 'body',
+            required: true,
+            schema: { $ref: "#/definitions/ProductModel" }
+    } */
     try {
       const {
         product_id,
@@ -101,6 +111,11 @@ const productCtrl = {
     }
   },
   deleteProduct: async (req, res) => {
+    /*  #swagger.tags = ['Products']
+        #swagger.security = [{
+        "Authorization": []
+        }]
+    	} */
     try {
       await Products.findByIdAndDelete(req.params.id);
       res.json({ msg: 'Deleted a Product' });
@@ -109,6 +124,15 @@ const productCtrl = {
     }
   },
   updateProduct: async (req, res) => {
+    /*  #swagger.tags = ['Products']
+        #swagger.security = [{
+        "Authorization": []
+        }]
+    	#swagger.parameters['obj'] = {
+            in: 'body',
+            required: true,
+            schema: { $ref: "#/definitions/ProductModel" }
+    } */
     try {
       const { title, price, description, content, images, category } = req.body;
       if (!images) return res.status(400).json({ msg: 'No image upload' });

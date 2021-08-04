@@ -4,6 +4,12 @@ const jwt = require('jsonwebtoken');
 
 const userCtrl = {
   register: async (req, res) => {
+    /*  #swagger.tags = ['Auth']
+    	#swagger.parameters['obj'] = {
+            in: 'body',
+            required: true,
+            schema: { $ref: "#/definitions/RegisterModel" }
+    } */
     try {
       const { name, email, password } = req.body;
 
@@ -44,6 +50,12 @@ const userCtrl = {
     }
   },
   login: async (req, res) => {
+    /*  #swagger.tags = ['Auth']
+    	#swagger.parameters['obj'] = {
+            in: 'body',
+            required: true,
+            schema: { $ref: "#/definitions/LoginModel" }
+    } */
     try {
       const { email, password } = req.body;
 
@@ -70,6 +82,7 @@ const userCtrl = {
     }
   },
   logout: async (req, res) => {
+    // #swagger.tags = ['Auth']
     try {
       res.clearCookie('refreshtoken', { path: '/user/refresh_token' });
       return res.json({ msg: 'Logged out' });
@@ -78,6 +91,8 @@ const userCtrl = {
     }
   },
   refreshToken: (req, res) => {
+    // #swagger.tags = ['Auth']
+
     try {
       const rf_token = req.cookies.refreshtoken;
 
@@ -97,11 +112,17 @@ const userCtrl = {
     }
   },
   getUser: async (req, res) => {
+    /*
+        #swagger.tags = ['Auth']
+        #swagger.security = [{
+            "Authorization": []
+        }]
+    */
     try {
-        const user = await UserModel.findById(req.user.id).select('-password');
-        if (!user) return res.status(400).json({ msg: 'User does not exist.' });
+      const user = await UserModel.findById(req.user.id).select('-password');
+      if (!user) return res.status(400).json({ msg: 'User does not exist.' });
 
-        res.json(user);
+      res.json(user);
     } catch (err) {
       return res.status(500).json({ msg: err.message });
     }

@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "description": "a fullstack ecommerce app",
   "main": "server.js",
-
   "scripts": {
-    "dev":"nodemon server.js"
+    "dev": "nodemon server.js",
+    "start-gendoc": "node swagger.js"
   },
   "repository": "https://github.com/maximdave/Ecommerce-MERN.git",
   "author": "David <enoragbondavid35@gmail.com>",
@@ -20,7 +20,9 @@
     "express": "^4.17.1",
     "express-fileupload": "^1.2.1",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^5.13.5"
+    "mongoose": "^5.13.5",
+    "swagger-autogen": "^2.11.1",
+    "swagger-ui-express": "^4.1.6"
   },
   "devDependencies": {
     "nodemon": "^2.0.12"
