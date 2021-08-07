@@ -10,7 +10,7 @@ const Header = () => {
   const state = useContext(GlobalState);
   const [isLogged] = state.userAPI.isLogged;
   const [isAdmin] = state.userAPI.isAdmin;
-  // const [cart] = state.userAPI.cart;
+  const [cart] = state.userAPI.cart;
   const [menu, setMenu] = useState(false);
   console.log(state);
 
@@ -89,7 +89,7 @@ const Header = () => {
         ''
       ) : (
         <div className='cart-icon'>
-          {/* <span>{cart.length}</span> */}
+          <span>{cart.length}</span>
           <Link to='/cart'>
             <img src={Cart} alt='' width='30' />
           </Link>
