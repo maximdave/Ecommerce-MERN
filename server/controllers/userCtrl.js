@@ -135,10 +135,10 @@ const userCtrl = {
         }]
     */
     try {
-      const user = await Users.findById(req.user.id);
+      const user = await UserModel.findById(req.user.id);
       if (!user) return res.status(400).json({ msg: 'User does not exist.' });
 
-      await Users.findOneAndUpdate(
+      await UserModel.findOneAndUpdate(
         { _id: req.user.id },
         {
           cart: req.body.cart,
