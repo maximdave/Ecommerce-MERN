@@ -21,6 +21,10 @@
       "description": "Ecommerce Products Categories endpoints"
     },
     {
+      "name": "Users",
+      "description": "Actions of Users endpoints"
+    },
+    {
       "name": "Uploads",
       "description": "Admin Upload Products Images endpoints"
     }
@@ -139,10 +143,45 @@
     "/user/infor": {
       "get": {
         "tags": [
-          "Auth"
+          "Users"
         ],
         "description": "",
         "parameters": [],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "Authorization": []
+          }
+        ]
+      }
+    },
+    "/user/addcart": {
+      "patch": {
+        "tags": [
+          "Users"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "obj",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "cart": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
         "responses": {
           "400": {
             "description": "Bad Request"

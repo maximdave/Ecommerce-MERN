@@ -26,6 +26,10 @@ const doc = {
       description: 'Ecommerce Products Categories endpoints',
     },
     {
+      name: 'Users',
+      description: 'Actions of Users endpoints',
+    },
+    {
       name: 'Uploads',
       description: 'Admin Upload Products Images endpoints',
     },
