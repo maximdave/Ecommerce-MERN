@@ -2,6 +2,7 @@ import React, { useContext, useState, useEffect } from 'react';
 import { GlobalState } from '../../../GlobalState';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import PaypalButton from './PaypalButton';
 
 const Cart = () => {
   const state = useContext(GlobalState);
@@ -63,8 +64,21 @@ const Cart = () => {
       });
 
       setCart([...cart]);
-        addToCart(cart);
+      addToCart(cart);
     }
+  };
+
+  const tranSuccess = async (payment) => {
+    // const {paymentID, address} = payment;
+
+    // await axios.post('/api/payment', {cart, paymentID, address}, {
+    //     headers: {Authorization: token}
+    // })
+
+    // setCart([])
+    // addToCart([])
+    // alert("You have successfully placed an order.")
+    console.log(payment);
   };
 
   if (cart.length === 0)
@@ -98,7 +112,7 @@ const Cart = () => {
 
       <div className='total'>
         <h3>Toatal: ${total}</h3>
-        <Link to='#!'>Payment</Link>
+        <PaypalButton total={total} tranSuccess={tranSuccess} />
       </div>
     </div>
   );
