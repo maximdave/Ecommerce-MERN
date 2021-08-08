@@ -68,6 +68,11 @@ const doc = {
       },
       $category: 'Men',
     },
+    PaymentModel: {
+      $cart: 'userCart',
+      $paymentID: '60f622bde00d010015f06eed',
+      $address: 'Lagos, Nigeria',
+    },
     UploadModel: {
       $file: 'myImage.png',
     },

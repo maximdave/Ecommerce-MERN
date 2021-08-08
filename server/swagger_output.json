@@ -472,6 +472,57 @@
           }
         ]
       }
+    },
+    "/api/payment": {
+      "get": {
+        "tags": [
+          "Users"
+        ],
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "Authorization": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "Users"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "obj",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/PaymentModel"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "Authorization": []
+          }
+        ]
+      }
     }
   },
   "definitions": {
@@ -575,6 +626,28 @@
         "content",
         "images",
         "category"
+      ]
+    },
+    "PaymentModel": {
+      "type": "object",
+      "properties": {
+        "cart": {
+          "type": "string",
+          "example": "userCart"
+        },
+        "paymentID": {
+          "type": "string",
+          "example": "60f622bde00d010015f06eed"
+        },
+        "address": {
+          "type": "string",
+          "example": "Lagos, Nigeria"
+        }
+      },
+      "required": [
+        "cart",
+        "paymentID",
+        "address"
       ]
     },
     "UploadModel": {
