@@ -1,5 +1,5 @@
 const Payments = require('../models/paymentModel');
-const Users = require('../models/userModel');
+const UserModel = require('../models/userModel');
 const Products = require('../models/productModel');
 
 const paymentCtrl = {
@@ -28,7 +28,7 @@ const paymentCtrl = {
             schema: { $ref: "#/definitions/PaymentModel" }
     } */
     try {
-      const user = await Users.findById(req.user.id).select('name email');
+      const user = await UserModel.findById(req.user.id).select('name email');
       if (!user) return res.status(400).json({ msg: 'User does not exist.' });
 
       const { cart, paymentID, address } = req.body;
@@ -44,12 +44,15 @@ const paymentCtrl = {
         address,
       });
 
+      // console.log(newPayment)
+
       cart.filter((item) => {
         return sold(item._id, item.quantity, item.sold);
       });
 
       await newPayment.save();
-      res.json({ msg: 'Payment Succes!' });
+      res.json(newPayment);
+      // res.json({ msg: 'Payment Succes!' });
     } catch (err) {
       return res.status(500).json({ msg: err.message });
     }

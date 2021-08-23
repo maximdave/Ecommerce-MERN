@@ -12,7 +12,7 @@ const Header = () => {
   const [isAdmin] = state.userAPI.isAdmin;
   const [cart] = state.userAPI.cart;
   const [menu, setMenu] = useState(false);
-  console.log(state);
+  // console.log(state);
 
   const adminRouter = () => {
     return (

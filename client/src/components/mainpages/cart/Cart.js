@@ -69,16 +69,20 @@ const Cart = () => {
   };
 
   const tranSuccess = async (payment) => {
-    // const {paymentID, address} = payment;
-
-    // await axios.post('/api/payment', {cart, paymentID, address}, {
-    //     headers: {Authorization: token}
-    // })
-
-    // setCart([])
-    // addToCart([])
-    // alert("You have successfully placed an order.")
     console.log(payment);
+    const { paymentID, address } = payment;
+
+    await axios.post(
+      '/api/payment',
+      { cart, paymentID, address },
+      {
+        headers: { Authorization: token },
+      }
+    );
+
+    setCart([]);
+    addToCart([]);
+    alert('You have successfully placed an order.');
   };
 
   if (cart.length === 0)
